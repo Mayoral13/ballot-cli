@@ -66,7 +66,7 @@ input := bufio.NewReader(os.Stdin)
 text,_ := input.ReadString('\n')
 value := strings.TrimSpace(text)
 if(value != ""){
-counter++;
+	counter++;
 candidates = append(candidates,Candidate{name:value,id:counter,votes:0,winner:false});// STORES CANDIDATES DETAILS
 users[counter] = Candidate{name:value,id:counter,votes:0,winner:false} 
 }else{
@@ -111,10 +111,10 @@ func EndVote(){ // FUNCTION TO POLL ALL VOTES AND DECLARE WINNER
 	if(started){
 		fmt.Println("Voting ended")
 		for i:=1; i<len(candidates); i++{
-			for j:=0; j<len(candidates); j++{
+			for j:=0; j<len(candidates) -1; j++{
             if(candidates[i].votes > candidates[j].votes){
 				winner = candidates[i].id;
-			}else{
+			}else if(candidates[i].votes < candidates[j].votes){
 				winner = candidates[j].id;
 			}
 			}
@@ -124,7 +124,9 @@ func EndVote(){ // FUNCTION TO POLL ALL VOTES AND DECLARE WINNER
 		fmt.Println("VOTING NOT STARTED")
 	}
 	ended = true;
-	fmt.Println("Winner is ", users[winner -1].name)//USING WINNER -1 BECAUSE A SLICE STARTS FROM 0 
-	fmt.Println("Wins with votes of ", users[winner -1].votes)//TO GET THE RIGHT INDEX IT WILL BE ID - 1
+	fmt.Println("Winner is ", users[winner - 1].name)//USING WINNER -1 BECAUSE A SLICE STARTS FROM 0 
+	fmt.Println("Wins with votes of ", users[winner - 1].votes)//TO GET THE RIGHT INDEX IT WILL BE ID - 1
 	os.Exit(0)
 }
+
+///WORKING ON
