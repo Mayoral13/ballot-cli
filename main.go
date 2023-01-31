@@ -90,7 +90,7 @@ func VoteUser(){ // TO VOTE FOR SPECIFIC USER BASED ON USER INPUT
 		fmt.Println("NOT FOUND")
 	}else if(UserExist(id)){
 	if votes,ok := users[id];ok{ // WORKAROUND TO REINITIALIZE CANDIDATE STRUCT DATA
-		votes.votes++;
+		votes.votes += 1;
 		users[id] = votes;
 		fmt.Println("You voted for candidate ", users[id].id)
 	}else{
@@ -110,7 +110,7 @@ func EndVote(){ // FUNCTION TO POLL ALL VOTES AND DECLARE WINNER
 	var winner int;
 	if(started){
 		fmt.Println("Voting ended")
-		for i:=0; i<len(candidates) -1; i++{
+		for i:=1; i<len(candidates); i++{
 			for j:=0; j<len(candidates); j++{
             if(candidates[i].votes > candidates[j].votes){
 				winner = candidates[i].id;
@@ -124,7 +124,7 @@ func EndVote(){ // FUNCTION TO POLL ALL VOTES AND DECLARE WINNER
 		fmt.Println("VOTING NOT STARTED")
 	}
 	ended = true;
-	fmt.Println("Winner is ", users[winner].name)
-	fmt.Println("Wins with votes of ", users[winner].votes)
+	fmt.Println("Winner is ", users[winner -1].name)
+	fmt.Println("Wins with votes of ", users[winner -1].votes)
 	os.Exit(0)
 }
