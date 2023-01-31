@@ -124,7 +124,7 @@ func EndVote(){ // FUNCTION TO POLL ALL VOTES AND DECLARE WINNER
 		fmt.Println("VOTING NOT STARTED")
 	}
 	ended = true;
-	fmt.Println("Winner is ", users[winner -1].name)
-	fmt.Println("Wins with votes of ", users[winner -1].votes)
+	fmt.Println("Winner is ", users[winner -1].name)//USING WINNER -1 BECAUSE A SLICE STARTS FROM 0 
+	fmt.Println("Wins with votes of ", users[winner -1].votes)//TO GET THE RIGHT INDEX IT WILL BE ID - 1
 	os.Exit(0)
 }
