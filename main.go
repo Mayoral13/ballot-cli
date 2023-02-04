@@ -110,8 +110,8 @@ func EndVote(){ // FUNCTION TO POLL ALL VOTES AND DECLARE WINNER
 	var winner int;
 	if(started){
 		fmt.Println("Voting ended")
-		for i:=1; i<len(candidates); i++{
-			for j:=0; j<len(candidates) -1; j++{
+		for i:=0; i<len(candidates) - 1; i++{
+			for j:=0; j<len(candidates); j++{
             if(candidates[i].votes > candidates[j].votes){
 				winner = candidates[i].id;
 			}else if(candidates[i].votes < candidates[j].votes){
@@ -124,8 +124,8 @@ func EndVote(){ // FUNCTION TO POLL ALL VOTES AND DECLARE WINNER
 		fmt.Println("VOTING NOT STARTED")
 	}
 	ended = true;
-	fmt.Println("Winner is ", users[winner - 1].name)//USING WINNER -1 BECAUSE A SLICE STARTS FROM 0 
-	fmt.Println("Wins with votes of ", users[winner - 1].votes)//TO GET THE RIGHT INDEX IT WILL BE ID - 1
+	fmt.Println("Winner is ", users[winner].name)//USING WINNER -1 BECAUSE A SLICE STARTS FROM 0 
+	fmt.Println("Wins with votes of ", users[winner].votes)//TO GET THE RIGHT INDEX IT WILL BE ID - 1
 	os.Exit(0)
 }
 
